@@ -126,3 +126,42 @@ SELECT * FROM onlyheros;
 CREATE OR ALTER VIEW onlyheros AS SELECT anime_id,character_name FROM Character where is_villain=0;
 
 DROP VIEW onlyheros;
+
+SELECT ASCII('Bhanu');
+
+SELECT CHAR(65);
+
+SELECT CHARINDEX('a','Bhanu');
+
+SELECT CONCAT('Bhanu',' ','Prakash')+' Sakkuri';
+SELECT CONCAT_WS(':','Virat','kohli');
+
+SELECT SUBSTRING('ABCDEF',2,4);
+SELECT LEFT('ABCDEF',3);
+SELECT RIGHT('ABCDEF',3);
+
+SELECT LOWER('BHANU');
+
+SELECT UPPER('bhanu');
+
+SELECT REVERSE('bhanu');
+
+SELECT LEN('bhanu');
+
+SELECT TRIM('     bhanu    ');
+SELECT LTRIM('     bhanu    ');
+SELECT RTRIM('     bhanu    ');
+
+SELECT REPLACE('Bhanu Prakash','P','V');
+
+SELECT GETDATE();
+
+SELECT DATEADD(MONTH,2,'2001/01/21');
+
+SELECT DATEDIFF(DAY,'2001/01/21','2000/10/18');
+
+SELECT DAY('2001/01/21');
+SELECT MONTH('2001/01/21');
+SELECT YEAR('2001/01/21');
+
+SELECT CAST(25.65 AS INT);

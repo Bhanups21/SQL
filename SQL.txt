@@ -328,3 +328,37 @@
   4. Dropping view:
   
     DROP VIEW view_name;
+	
+* Functions:
+
+	1. ASCII - Returns ASCII value of the character passed. If a string is passed first character ASCII is returned.
+	
+	2. CHAR - Returns the character value to ASCII value passed.
+	
+	3. CHARINDEX - The CHARINDEX() function searches for a substring in a string, and returns the position. If the substring is not found, this function returns 0. This function performs a case-insensitive search.
+	
+	4. CONCAT - The CONCAT() function adds two or more strings together. We can also do this with + operator. We also have CONCAT_WS() where we can concatenate strings with separator between them. It takes first operator as separator.
+	
+	5. SUBSTRING - It takes three arguments one the actual column, start and end index and returns the part of string between them. We have LEFT and RIGHT methods as well takes two parameters one column name and number of characters to return from left and right.
+	
+	6. LOWER - Converts every character in the column to lower case.
+	
+	7. UPPER - Converts every character in the column to upper case.
+	
+	8. REVERSE - Reverses the column content and returns back.
+	
+	9. LEN - Returns number of characters in the column.
+	
+	10. TRIM - Trims of additional spaces in the column at the beginning and the end. We have two other methods LTRIM and RTRIM to do only at respective ends.
+	
+	11. REPLACE - takes three arguments, actual column, second to be converted substring, third have to converted substring.
+	
+	12. GETDATE - Returns current timestamp.
+	
+	13. DATEADD - three arguments, interval(DAY,MONTH,YEAR), units to add and actual date.
+	
+	14. DATEDIFF - three arguments, INTERVAL(DAY,MONTH,YEAR), next two arguments are date to calculate difference. returns answer in the interval mentioned unit.
+	
+	15. DAY,MONTH,YEAR - Takes date and returns respective part of the date.
+	
+	16. CAST - Used to convert from one datatype to other.
