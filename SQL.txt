@@ -1,0 +1,330 @@
+* RDBMS stands for Relational Database Management System. RDBMS is the basis for SQL.
+
+* The data in RDBMS is stored in database objects called tables. A table is a collection of related data entries and it consists of columns and rows.
+
+* A database most often contains one or more tables. Each table is identified by a name and contain records (rows) with data.
+
+* Every table is broken up into smaller entities called fields. A field is a column in a table that is designed to maintain specific information about every record in the table.
+
+* A record, also called a row, is each individual entry that exists in a table.
+
+* SQL stands for Structured Query Language.
+
+* SQL is a standard language for storing, manipulating and retrieving data in databases.
+
+* Data Types: They define the type of data that will be stored.
+
+  char(n) - Fixed-length non-Unicode character data
+  varchar(n) - Variable-length non-Unicode character data
+  nchar(n) - Fixed-length Unicode character data
+  nvarchar(n) - Variable-length Unicode character data
+  binary(n) - Fixed-length binary data
+  varbinary(n) - Variable-length binary data
+  bit - Integer that can be 0, 1, or NULL
+  tinyint - Allows whole numbers from 0 to 255
+  smallint - Allows whole numbers between -32,768 and 32,767
+  int - Allows whole numbers between -2,147,483,648 and 2,147,483,647
+  bigint - Allows whole numbers between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807
+  decimal - Fixed precision and scale numbers.
+  float - Floating precision number data from -1.79E + 308 to 1.79E + 308.
+  datetime - From January 1, 1753 to December 31, 9999 with an accuracy of 3.33 milliseconds
+  datetime2 - From January 1, 0001 to December 31, 9999 with an accuracy of 100 nanoseconds
+
+* Comments: Comments are used to explain sections of SQL statements, or to prevent execution of SQL statements.
+
+  1. Single Line Comments: Single line comments start with --.
+  
+  2. Multi-line Comments: Multi-line comments start with /* and end with */. Any text between /* and */ will be ignored.
+
+* SQL Statements : Actions you need to perform on a database are done with SQL statements. This statements contains keywords. SQL keywords are NOT case sensitive.
+
+* Semicolon is the standard way to separate each SQL statement in database systems that allow more than one SQL statement to be executed in the same call to the server.
+
+* CREATE DATABASE : The CREATE DATABASE statement is used to create a new SQL database.
+
+  syntax: CREATE DATABASE databasename;
+  
+* DROP DATABASE : The DROP DATABASE statement is used to drop an existing SQL database.
+
+  syntax: DROP DATABASE databasename;
+
+* BACKUP DATABASE : The BACKUP DATABASE statement is used in SQL Server to create a full back up of an existing SQL database.
+
+  syntax: BACKUP DATABASE databasename TO DISK = 'filepath';
+	
+  A differential back up only backs up the parts of the database that have changed since the last full database backup.
+  
+  syntax: BACKUP DATABASE databasename TO DISK = 'filepath' WITH DIFFERENTIAL;
+  
+* CREATE TABLE : The CREATE TABLE statement is used to create a new table in a database.
+
+  syntax: CREATE TABLE table_name (column1 datatype,column2 datatype,column3 datatype,....);
+  
+  The column parameters specify the names of the columns of the table. The datatype parameter specifies the type of data the column can hold (e.g. varchar, integer, date, etc.).
+  
+* DROP TABLE : The DROP TABLE statement is used to drop an existing table in a database.
+
+  syntax: DROP TABLE table_name;
+  
+* TRUNCATE TABLE: The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.
+
+  syntax: TRUNCATE TABLE table_name;
+  
+* ALTER TABLE: The ALTER TABLE statement is used to add, delete, or modify columns in an existing table. The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+
+  syntax: ALTER TABLE table_name ADD column_name datatype;(adding column)
+		  ALTER TABLE table_name DROP COLUMN column_name;(deleting column)
+		  ALTER TABLE table_name ALTER COLUMN column_name datatype;(altering column)
+		  
+* Constraints: SQL constraints are used to specify rules for the data in a table. If there is any violation between the constraint and the data action, the action is aborted. Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement.
+
+  NOT NULL - Ensures that a column cannot have a NULL value
+  UNIQUE - Ensures that all values in a column are different
+  PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+  FOREIGN KEY - Prevents actions that would destroy links between tables. Reference for primary key of a table in another table. useful at the time of joins.
+  CHECK - Ensures that the values in a column satisfies a specific condition
+  DEFAULT - Sets a default value for a column if no value is specified
+  CREATE INDEX - Used to create and retrieve data from the database very quickly
+  IDENTITY(,) - allows a unique number to be generated automatically when a new record is inserted into a table. Often this is the primary key field that we would like to be created automatically every time a new record is inserted. It takes two parameters first one defines where to start giving numbers second one tells about how much increment to me made.
+
+* SELECT : The SELECT statement is used to select data from a database.
+
+  syntax: SELECT column1, column2, ... FROM table_name;
+  
+  If you want to retrieve all columns instead of writing every column name you can just keep * in that place. We can perform arthimetic operations on numeric columns where ever in the statements as our wish.
+  
+* DISTINCT : It is used to retrieve only distinct records from the table.
+
+  syntax: SELECT DISTINCT column1, column2, ... FROM table_name;
+  
+  If multiple columns were defined after DISTINCT it considers each and every column for distinct values. And only considers distinct if two records containing all fields with same values.
+  
+* WHERE : The WHERE clause is used to filter records. It is used to extract only those records that fulfill a specified condition.
+
+  syntax: SELECT column1, column2, ... FROM table_name WHERE condition;
+  
+  The WHERE clause is not only used in SELECT statements, it is also used in UPDATE, DELETE, etc.!
+  
+  Operators in The WHERE Clause, =(Equals to), >(Greater than), <(lesser than), >=(Greater than or equal), <=(Less than or equal), <> or !=(not equals to), BETWEEN AND(Between a certain range), LIKE(search for a pettern) and IN(To specify multiple possible values for a column).
+  
+* LIKE: The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+  syntax: SELECT column1, column2, ... FROM table_name WHERE columnN LIKE pattern;
+  
+  To form patterns, we use wildcards. A wildcard character is used to substitute one or more characters in a string.
+  
+  % : Represents zero or more characters
+  _ : Represents a single character
+  [] : Represents any single character within the brackets
+  ^ : Represents any character not in the brackets
+  - : Represents any single character within the specified range
+  
+* IN: The IN operator allows you to specify multiple values in a WHERE clause. The IN operator is a shorthand for multiple OR conditions.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE column_name IN (value1, value2, ...);
+  
+  You can use another SELECT query inside IN called the subquery.
+  
+* BETWEEN: The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+* AS: SQL aliases are used to give a table, or a column in a table, a temporary name. Aliases are often used to make column names more readable. An alias only exists for the duration of that query. An alias is created with the AS keyword. AS keyword is optional, you can just place the alias name next to the column it will work the same. AS can be used along with columns, tables, etc.
+
+  syntax: SELECT column_name AS alias_name FROM table_name AS alias_name;
+  
+* ORDER BY : The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+
+  syntax: SELECT column1, column2, ... FROM table_name ORDER BY column1 ASC|DESC, column2 ASC|DESC, ...;
+  
+  The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword. For string values the ORDER BY keyword will order alphabetically.
+  
+* AND : The AND operator is used to filter records based on more than one condition in where clause. The AND operator displays a record if all the conditions are TRUE.
+
+  syntax: SELECT column1, column2, ... FROM table_name WHERE condition1 AND condition2 AND condition3 ...;
+	
+* OR : The OR operator displays a record if any of the conditions are TRUE.
+
+  syntax: SELECT column1, column2, ... FROM table_name WHERE condition1 OR condition2 OR condition3 ...;
+  
+  AND and OR can be used in the same condition in WHERE clause. Be aware of execution order use parenthesis to set the condition right.
+  
+* NOT : The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.
+
+  syntax: SELECT column1, column2, ... FROM table_name WHERE NOT condition;
+  
+  Based on the type of operator we use with NOT, position of not is determined when using with operators like BETWEEN, LIKE and IN. NOT is placed right before them. But with arthimetic operators it is placed right before the condition itself.
+    
+* NULL : A field with a NULL value is a field with no value. A NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation!
+
+  It is not possible to test for NULL values with comparison operators, such as =, <, or <>. We will have to use the IS NULL and IS NOT NULL operators instead.
+  
+  syntax:
+  
+  1. IS NULL : SELECT column_names FROM table_name WHERE column_name IS NULL;
+  
+  2. IS NOT NULL : SELECT column_names FROM table_name WHERE column_name IS NOT NULL;
+  
+* TOP : The SELECT TOP clause is used to specify the number of records to return. The SELECT TOP clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+
+  syntax: SELECT TOP number|percent column_name(s) FROM table_name WHERE condition;
+  
+  We can solely use TOP that will return only number of records we mentioned. But using TOP along with PERCENT returns only percentage of those records from total.
+
+* Aggregate Functions: An aggregate function is a function that performs a calculation on a set of values, and returns a single value. Aggregate functions ignore null values (except for COUNT()).
+
+  1. MIN(): The MIN() function returns the smallest value of the selected column.
+  
+    syntax: SELECT MIN(column_name) FROM table_name WHERE condition;
+  
+  2. MAX(): The MAX() function returns the largest value of the selected column.
+    
+    syntax: SELECT MAX(column_name) FROM table_name WHERE condition;
+	
+  3. COUNT(): The COUNT() function returns the number of rows that matches a specified criterion. Instead of column name if we use * it count total records in the table. While using * it counts NULL's as well. But using individual columns it doesn't count NULL's.
+    
+    syntax: SELECT COUNT(column_name) FROM table_name WHERE condition;
+	
+	If DISTINCT is specified, rows with the same value for the specified column will be counted as one.
+	
+  4. SUM(): The SUM() function returns the total sum of a numeric column.
+  
+    syntax: SELECT SUM(column_name) FROM table_name WHERE condition;
+	
+  5. AVG(): The AVG() function returns the average value of a numeric column. NULL values are ignored.
+  
+    syntax: SELECT AVG(column_name) FROM table_name WHERE condition;
+	
+* GROUP BY: The GROUP BY statement groups rows that have the same values into summary rows.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE condition GROUP BY column_name(s);
+  
+* HAVING: The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE condition GROUP BY column_name(s) HAVING condition;
+	
+* JOIN: A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+  Here are the different types of the JOINs in SQL:
+  
+  1. INNER JOIN: The INNER JOIN keyword selects records that have matching values in both tables. INNER is the default join type for JOIN, so when you write JOIN the parser actually writes INNER JOIN.
+  
+    syntax: SELECT column_name(s) FROM table1 INNER JOIN table2 ON table1.column_name = table2.column_name;
+	
+  2. LEFT JOIN: The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2).
+  
+    syntax: SELECT column_name(s) FROM table1 LEFT JOIN table2 ON table1.column_name = table2.column_name;
+	
+  3. RIGHT JOIN: The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1).
+  
+    syntax: SELECT column_name(s) FROM table1 RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+
+  4. FULL JOIN: The FULL OUTER JOIN keyword returns all matching records from both tables whether the other table matches or not. FULL OUTER JOIN and FULL JOIN are the same.
+  
+	syntax: SELECT column_name(s) FROM table1 FULL OUTER JOIN table2 ON table1.column_name = table2.column_name WHERE condition;
+	
+* UNION: The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+  1. Every SELECT statement within UNION must have the same number of columns
+
+  2. The columns must also have similar data types
+
+  3. The columns in every SELECT statement must also be in the same order
+  
+  syntax: SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;
+  
+  UNION ALL: The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL.
+  
+  syntax: SELECT column_name(s) FROM table1 UNION ALL SELECT column_name(s) FROM table2;
+  
+* EXISTS: The EXISTS operator is used to test for the existence of any record in a subquery. The EXISTS operator returns TRUE if the subquery returns one or more records.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE EXISTS (SELECT column_name FROM table_name WHERE condition);
+  
+* ANY(): The ANY operator returns a boolean value as a result returns. TRUE if ANY of the subquery values meet the condition. ANY means that the condition will be true if the operation is true for any of the values in the range.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE column_name operator ANY (SELECT column_name FROM table_name WHERE condition);
+  
+* ALL(): The ALL operator returns a boolean value as a result. returns TRUE if ALL of the subquery values meet the condition. ALL means that the condition will be true only if the operation is true for all values in the range.
+
+  syntax: SELECT column_name(s) FROM table_name WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE condition);
+  
+* SELECT INTO: The SELECT INTO statement copies data from one table into a new table.
+
+  syntax: SELECT column1, column2, column3, ... INTO newtable [IN externaldb] FROM oldtable WHERE condition;
+  
+* CASE: The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause. If there is no ELSE part and no conditions are true, it returns NULL.
+
+  syntax: CASE
+			WHEN condition1 THEN result1
+			WHEN condition2 THEN result2
+			WHEN conditionN THEN resultN
+			ELSE result
+		  END
+		  
+* COALESCE(): Returns first non-null value in the list.
+
+	Syntax: SELECT COALESCE(column, value) FROM table
+
+* INSERT INTO : The INSERT INTO statement is used to insert new records in a table. It can be written in 2 ways,
+
+  1. Specify both the column names and the values to be inserted.
+  
+    syntax: INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+	
+	Here you can specify what columns in the database you want to add values of the record to.
+	
+  2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table.
+  
+	syntax: INSERT INTO table_name VALUES (value1, value2, value3, ...);
+	
+    It is also possible to insert multiple rows in one statement. Make the records in tuples and seperate them with commas(,).
+  
+  3. The INSERT INTO SELECT statement copies data from one table and inserts it into another table. The INSERT INTO SELECT statement requires that the data types in source and target tables match. The existing records in the target table are unaffected.
+  
+    syntax: INSERT INTO table2 (column1, column2, column3, ...) SELECT column1, column2, column3, ... FROM table1 WHERE condition;
+
+* UPDATE : The UPDATE statement is used to modify the existing records in a table.
+
+  syntax: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+  
+  If you omit the WHERE clause, all records in the table will be updated!
+  
+* DELETE : The DELETE statement is used to delete existing records in a table.
+
+  syntax: DELETE FROM table_name WHERE condition;
+  
+  If you omit the WHERE clause, all records in the table will be deleted!
+  
+* Stored Procedures: A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+
+  syntax: CREATE PROCEDURE <name> @parameter1 datatype1, @parameter2 datatype2 AS BEGIN SELECT * FROM Customers END GO
+		  EXEC <name>;
+		  
+* Index: Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries. Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.
+
+  1. Creating an index:
+  
+    CREATE INDEX index_name ON table_name (column1, column2, ...);
+	
+  2. Dropping an index:
+  
+    DROP INDEX table_name.index_name;
+	
+* Views: A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+  1. Creating views:
+  
+    CREATE VIEW view_name AS SELECT column1, column2, ... FROM table_name WHERE condition;
+	
+  2. Selecting on views:
+  
+    SELECT column1,column2,.... FROM view_name;
+	
+  3. Altering view:
+  
+    CREATE OR ALTER VIEW view_name AS SELECT column1, column2, ... FROM table_name WHERE condition;
+	
+  4. Dropping view:
+  
+    DROP VIEW view_name;
